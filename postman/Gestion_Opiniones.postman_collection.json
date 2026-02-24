@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "44f86c78-0a00-4542-ad39-53d537e9cf7d",
+    "_postman_id": "c3b830f4-644a-4d9c-a170-c5796720b8d8",
     "name": "Gestion_Opiniones",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "48332496",
-    "_collection_link": "https://go.postman.co/collection/48332496-44f86c78-0a00-4542-ad39-53d537e9cf7d?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/48332496-c3b830f4-644a-4d9c-a170-c5796720b8d8?source=collection_link"
   },
   "item": [
     {
@@ -43,24 +43,28 @@
                 }
               },
               "response": []
-            },
+            }
+          ]
+        },
+        {
+          "name": "VERIFICACIÓN_EMAIL",
+          "item": [
             {
-              "name": "VER_USUARIO",
+              "name": "VERIFICAR_EMAIL",
               "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{vault:authorization-secret}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
+                "method": "POST",
                 "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"token\": \"hbsWta0VSi0-pAR2K6gDYTzkTDDwM5w7HSC9-3qMZCg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "raw": "http://localhost:3005/api/v1/users/jaquino_admin",
+                  "raw": "http://localhost:3005/api/v1/auth/verify-email",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -69,8 +73,8 @@
                   "path": [
                     "api",
                     "v1",
-                    "users",
-                    "jaquino_admin"
+                    "auth",
+                    "verify-email"
                   ]
                 }
               },
@@ -98,7 +102,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"emailOrUsername\": \"jaquino2021159@gmail.com\",\r\n  \"password\": \"24489607\"\r\n}",
+                  "raw": "{\r\n  \"emailOrUsername\": \"jaquino2021159@gmail.com\",\r\n  \"password\": \"Password123!\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -117,109 +121,6 @@
                     "v1",
                     "auth",
                     "login"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "VERIFICACIÓN_EMAIL",
-          "item": [
-            {
-              "name": "VERIFICAR_EMAIL",
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"token\": \"g5S6RHQ8f3FPYkp4e_m1iiInm_av2Cx8UlmD2Zy9LVc\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "http://localhost:3005/api/v1/auth/verify-email",
-                  "protocol": "http",
-                  "host": [
-                    "localhost"
-                  ],
-                  "port": "3005",
-                  "path": [
-                    "api",
-                    "v1",
-                    "auth",
-                    "verify-email"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "FORGOTE_PASSWORD",
-          "item": [
-            {
-              "name": "VERIFI_ACOUNT",
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n    \"email\": \"jaquino2021159@gmail.com\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "http://localhost:3005/api/v1/auth/forgot-password",
-                  "protocol": "http",
-                  "host": [
-                    "localhost"
-                  ],
-                  "port": "3005",
-                  "path": [
-                    "api",
-                    "v1",
-                    "auth",
-                    "forgot-password"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "NEW_PASSWORD",
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"token\": \"PFhKoxbaYfqRdDbzVKT9xt2qlD4rtZ05WWyY_gyid8c\",\r\n  \"newPassword\": \"24489607\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "http://localhost:3005/api/v1/auth/reset-password",
-                  "protocol": "http",
-                  "host": [
-                    "localhost"
-                  ],
-                  "port": "3005",
-                  "path": [
-                    "api",
-                    "v1",
-                    "auth",
-                    "reset-password"
                   ]
                 }
               },
@@ -259,6 +160,79 @@
                 "v1",
                 "auth",
                 "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "VER_USUARIO",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/api/v1/users/jaquino_admin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "jaquino_admin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EDITAR_PERFIL",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Jorge\",\r\n  \"surname\": \"Aquino\",\r\n  \"username\": \"jaquino_dev\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/users/update-profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "update-profile"
               ]
             }
           },
@@ -365,7 +339,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3005/api/v1/posts/usr_4J2Xd6BmARtb",
+              "raw": "http://localhost:3005/api/v1/posts/usr_fmPhRnPXE7Ns",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -375,7 +349,7 @@
                 "api",
                 "v1",
                 "posts",
-                "usr_4J2Xd6BmARtb"
+                "usr_fmPhRnPXE7Ns"
               ]
             }
           },
@@ -384,10 +358,31 @@
         {
           "name": "BORRAR_POST",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:3005/api/v1/posts/usr_fmPhRnPXE7Ns",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "posts",
+                "usr_fmPhRnPXE7Ns"
+              ]
             }
           },
           "response": []
@@ -414,7 +409,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"postId\": \"usr_Tcr77Xcxh8y4\",\r\n  \"text\": \"¡Prueba de integración final exitosa! Todo funciona.\"\r\n}",
+              "raw": "{\r\n  \"postId\": \"usr_tkxMRcF6Bswg\",\r\n  \"text\": \"¡Prueba de integración final exitosa! Todo funciona.\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -486,7 +481,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{vault:authorization-secret}}",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfazFKdkVkSkhCU05LIiwianRpIjoiNWQxZmI0M2YtMWJiZS00MjY5LTk5NjItOTlhNjljNmIxNjRhIiwiaWF0IjoxNzcxOTExMTgzLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxOTEyOTgzLCJhdWQiOiJHZXN0aW9uX09waW5pb25lcyIsImlzcyI6Ikdlc3Rpb25fT3BpbmlvbmVzIn0.xe00rhdVXrZvZEXeZGHAhI82q85tLLzEbXJJeq_lMFg",
                   "type": "string"
                 }
               ]
@@ -494,7 +489,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3005/api/v1/comments/usr_6niNFKY3HPEW",
+              "raw": "http://localhost:3005/api/v1/comments/usr_tkxMRcF6Bswg",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -504,7 +499,74 @@
                 "api",
                 "v1",
                 "comments",
-                "usr_6niNFKY3HPEW"
+                "usr_tkxMRcF6Bswg"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "RECUPERACIÓN_CONTRASEÑA",
+      "item": [
+        {
+          "name": "SOLICITAR_RECUPERACIÓN",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"jaquino2021159@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/auth/forgot-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RESTABLECER_CONTRASEÑA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"token\": \"PFhKoxbaYfqRdDbzVKT9xt2qlD4rtZ05WWyY_gyid8c\",\r\n  \"newPassword\": \"24489607\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/auth/reset-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "reset-password"
               ]
             }
           },

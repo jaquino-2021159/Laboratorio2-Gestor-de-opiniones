@@ -10,7 +10,8 @@ import {
 const router = Router();
 
 router.put('/update-profile', ...updateOwnProfile);
-router.get('/:username', ...getUserByUsername); 
+
+router.get('/username/:username', ...getUserByUsername);
 
 router.put('/:userId/role', ...updateUserRole);
 router.get('/:userId/roles', ...getUserRoles);
