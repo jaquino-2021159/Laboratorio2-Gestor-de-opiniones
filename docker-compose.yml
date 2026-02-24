@@ -4,7 +4,7 @@ version: "3.8"
 services:
   postgres:
     image: postgres:16
-    container_name: proyectobancario_postgres
+    container_name: gestoropiniones_postgres
     restart: always
     environment:
       POSTGRES_DB: ${DB_NAME}
